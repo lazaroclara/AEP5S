@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maringá Ecoleta - Rota: <span th:text="${rota.nome}"></span></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header-container">
+    <div class="header-left">
+        <span>Maringá Ecoleta</span>
+    </div>
+    <div class="header-right">
+        <span>Olá, Motorista</span>
+        <a th:href="@{/logout}" class="logout-button">Sair</a>
+    </div>
+</header>
+
+<div class="content-container">
+    <h1 class="section-title">Rota de Coleta: <span th:text="${rota.nome}"></span></h1>
+    <p class="section-description">Acompanhe os pontos de coleta e marque a rota como concluída.</p>
+
+    <div class="mapa-container">
+        <div class="map-placeholder">
+            <p>Simulação de Mapa para Rota: <strong th:text="${rota.nome}"></strong></p>
+            <p>Pontos de Coleta:</p>
+            <ul>
+                <li th:each="endereco : ${enderecos}" th:text="${endereco}">Endereço da Residência</li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300?text=Mapa+da+Rota" alt="Simulação de Mapa" class="map-image">
+        </div>
+    </div>
+
+    <div class="route-actions">
+        <p th:if="${rota.rotaConcluidaPeloMotorista}" class="info-message">Esta rota já foi marcada como concluída.</p>
+        <form th:action="@{/motorista/concluir-rota}" method="post" th:unless="${rota.rotaConcluidaPeloMotorista}">
+            <input type="hidden" name="nomeRota" th:value="${rota.nome}">
+            <button type="submit" class="concluir-rota-button">Marcar Rota como Concluída</button>
+        </form>
+    </div>
+
+    <a th:href="@{/motorista/dashboard}" class="back-link">Voltar para Seleção de Rotas</a>
+</div>
+</body>
+</html>

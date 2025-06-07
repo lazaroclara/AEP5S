@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maringá Ecoleta - Detalhes da Validação</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header-container">
+    <div class="header-left">
+        <span>Maringá Ecoleta</span>
+    </div>
+    <div class="header-right">
+        <span>Olá, Administrador</span>
+        <a th:href="@{/logout}" class="logout-button">Sair</a>
+    </div>
+</header>
+
+<div class="content-container">
+    <h1 class="section-title">Detalhes da Rota: <span th:text="${rota.nome}"></span></h1>
+    <p class="section-description">Acompanhe e valide as participações das residências nesta rota.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Endereço</th>
+                <th>Participações</th>
+                <th>Desconto (%)</th>
+                <th>Última Coleta</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="residencia : ${residencias}">
+                <td th:text="${residencia.enderecoCompleto}">Rua das Flores, 123</td>
+                <td th:text="${residencia.participacoes} + ' de 6'">5 de 6</td>
+                <td th:text="${#numbers.formatDecimal(residencia.desconto, 1, 0)} + '%'">10%</td>
+                <td th:text="${residencia.ultimaColeta != null ? #temporals.format(residencia.ultimaColeta, 'dd/MM/yyyy') : 'N/A'}">20/05/2025</td>
+                <td>
+                    <form th:action="@{/admin/atualizarParticipacaoAdmin}" method="post">
+                        <input type="hidden" name="endereco" th:value="${residencia.enderecoCompleto}">
+                        <input type="hidden" name="nomeRota" th:value="${rota.nome}">
+                        <button type="submit" class="action-button">Atualizar Participação</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(residencias)}">
+                <td colspan="5">Nenhuma residência nesta rota ou rota não concluída pelo motorista.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <form th:action="@{/admin/marcarRotaValidada}" method="post" class="form-validate-route">
+        <input type="hidden" name="nomeRota" th:value="${rota.nome}">
+        <button type="submit" class="validate-route-button">Marcar Rota como Validada</button>
+    </form>
+
+    <a th:href="@{/admin/controle-coletas}" class="back-link">Voltar para Validação de Coletas</a>
+</div>
+</body>
+</html>

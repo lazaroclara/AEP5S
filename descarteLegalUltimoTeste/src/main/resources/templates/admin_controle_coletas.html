@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maringá Ecoleta - Validação de Coletas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header-container">
+    <div class="header-left">
+        <span>Maringá Ecoleta</span>
+    </div>
+    <div class="header-right">
+        <span>Olá, Administrador</span>
+        <a th:href="@{/logout}" class="logout-button">Sair</a>
+    </div>
+</header>
+
+<div class="content-container">
+    <h1 class="section-title">Validação de Coletas de Rotas</h1>
+    <p class="section-description">Rotas concluídas pelos motoristas que precisam de sua validação.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Nome da Rota</th>
+                <th>Status Motorista</th>
+                <th>Status Admin</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rota : ${rotasParaValidar}">
+                <td th:text="${rota.nome}">Rota Centro Histórico</td>
+                <td>Concluída</td>
+                <td>Pendente</td>
+                <td>
+                    <a th:href="@{/admin/validar-rota(nomeRota=${rota.nome})}" class="action-button">Ver Detalhes e Validar</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(rotasParaValidar)}">
+                <td colspan="4">Nenhuma rota para validação no momento.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+    <a th:href="@{/admin/dashboard}" class="back-link">Voltar ao Painel Administrativo</a>
+</div>
+</body>
+</html>

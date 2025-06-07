@@ -1,0 +1,478 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5; /* Cor de fundo suave */
+    color: #333;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3cb371; /* Verde vibrante */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-right span {
+    font-size: 14px;
+    color: #555;
+}
+
+.logout-button {
+    background-color: #3cb371;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #2e8b57;
+}
+
+.content-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 24px;
+    color: #3cb371;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.section-description {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos do formulário de login */
+.login-container {
+    width: 350px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container .logo-leaf {
+    width: 30px; /* Tamanho da folha */
+    height: 30px;
+    background-color: #3cb371; /* Cor da folha */
+    border-radius: 50%; /* Faz um círculo */
+    margin: 0 auto 15px;
+    position: relative;
+    transform: rotate(45deg); /* Gira para parecer uma folha */
+}
+
+.login-container h1 {
+    font-size: 28px;
+    color: #3cb371;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    padding: 12px 15px;
+    border: 1px solid #add8e6; /* Borda azul claro */
+    border-radius: 5px;
+    background-color: #f0fff0; /* Verde bem claro */
+    font-size: 16px;
+    outline: none;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #3cb371;
+    box-shadow: 0 0 5px rgba(60, 179, 113, 0.5);
+}
+
+.login-container button[type="submit"] {
+    background-color: #3cb371;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #2e8b57;
+}
+
+.login-tips {
+    font-size: 12px;
+    color: #999;
+    margin-top: 25px;
+}
+
+/* Estilos do formulário de cadastro */
+.cadastro-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 25px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.cadastro-form input[type="text"] {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    background-color: #fff;
+}
+
+.cadastro-form input[type="text"]:focus {
+    border-color: #3cb371;
+    box-shadow: 0 0 5px rgba(60, 179, 113, 0.3);
+}
+
+.submit-button {
+    background-color: #3cb371;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.submit-button:hover {
+    background-color: #2e8b57;
+}
+
+/* Estilos da tabela (motorista, agora admin_validar_coleta_detalhes) */
+.table-container {
+    margin-top: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Garante que bordas arredondadas funcionem com rolagem */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+table thead {
+    background-color: #e0e0e0; /* Cinza claro */
+}
+
+table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 15px;
+    color: #444;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee; /* Linhas mais claras */
+    font-size: 14px;
+    color: #666;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Linhas zebradas */
+}
+
+table tbody tr:hover {
+    background-color: #f0f8ff; /* Azul claro ao passar o mouse */
+}
+
+.action-button {
+    background-color: #3cb371;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #2e8b57;
+}
+
+/* Mensagens de feedback */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* Novos estilos para o menu do administrador */
+.admin-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.menu-button {
+    background-color: #3cb371;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 250px;
+    text-align: center;
+}
+
+.menu-button:hover {
+    background-color: #2e8b57;
+    transform: translateY(-3px);
+}
+
+/* Estilos para a seleção de rota do motorista */
+.rota-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.rota-card {
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.rota-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rota-card h3 {
+    color: #3cb371;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.rota-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.rota-card .select-button {
+    background-color: #007bff; /* Azul para "Ver Rota" */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.rota-card .select-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para a simulação de mapa */
+.mapa-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.map-placeholder {
+    background-color: #e6f7ff; /* Fundo azul claro para simular mapa */
+    border: 1px solid #b3e0ff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.map-placeholder p {
+    color: #0056b3;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.map-placeholder ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.map-placeholder li {
+    background-color: #fff;
+    border: 1px solid #cceeff;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #333;
+}
+
+.map-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.route-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.concluir-rota-button {
+    background-color: #28a745; /* Verde para "Concluir Rota" */
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.concluir-rota-button:hover {
+    background-color: #218838;
+}
+
+.info-message {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Estilos para o botão de voltar */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para o botão de validação de rota (admin) */
+.form-validate-route {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.validate-route-button {
+    background-color: #ffc107; /* Amarelo para "Validar Rota" */
+    color: #343a40;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.validate-route-button:hover {
+    background-color: #e0a800;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maringá Ecoleta - Administrador</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header-container">
+    <div class="header-left">
+        <span>Maringá Ecoleta</span>
+    </div>
+    <div class="header-right">
+        <span>Olá, Administrador</span>
+        <a th:href="@{/logout}" class="logout-button">Sair</a>
+    </div>
+</header>
+
+<div class="content-container">
+    <h1 class="section-title">Bem-vindo, Administrador!</h1>
+    <p class="section-description">Selecione uma opção abaixo para gerenciar o programa Descarte Legal.</p>
+
+    <div class="admin-menu">
+        <a th:href="@{/admin/cadastro-residencia}" class="menu-button">Cadastrar Nova Residência</a>
+        <a th:href="@{/admin/controle-coletas}" class="menu-button">Validar Coletas de Rota</a>
+    </div>
+
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarte Legal - Login</title>
+    <link rel="stylesheet" href="/css/style.css"> </head>
+<body>
+<div class="login-container">
+    <div class="logo-leaf"></div> <h1>Descarte Legal</h1>
+    <p>Acesso para motoristas e administradores</p>
+
+    <form th:action="@{/login}" method="post">
+        <input type="email" name="email" placeholder="seu.email@exemplo.com" required>
+        <input type="password" name="senha" placeholder="********" required>
+        <button type="submit">&#8594; Entrar</button>
+    </form>
+
+    <p class="login-tips">
+        Use 'motorista@ecoleeta.mga.br' / 'senha123' para motorista.<br>
+        Use 'admin@ecoleeta.mga.br' / 'admin123' para admin.
+    </p>
+
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</div>
+</body>
+</html>

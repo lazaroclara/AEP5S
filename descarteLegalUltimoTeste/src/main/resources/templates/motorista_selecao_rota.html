@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maringá Ecoleta - Selecionar Rota</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header-container">
+    <div class="header-left">
+        <span>Maringá Ecoleta</span>
+    </div>
+    <div class="header-right">
+        <span>Olá, Motorista</span>
+        <a th:href="@{/logout}" class="logout-button">Sair</a>
+    </div>
+</header>
+
+<div class="content-container">
+    <h1 class="section-title">Selecione a Rota para Coleta</h1>
+    <p class="section-description">Escolha a rota que você irá percorrer para realizar as coletas.</p>
+
+    <div class="rota-selection-grid">
+        <div class="rota-card" th:each="rota : ${rotas}">
+            <h3 th:text="${rota.nome}">Nome da Rota</h3>
+            <p>Status Motorista: <span th:text="${rota.rotaConcluidaPeloMotorista ? 'Concluída' : 'Pendente'}"></span></p>
+            <p>Status Admin: <span th:text="${rota.rotaValidadaPeloAdmin ? 'Validada' : 'Pendente'}"></span></p>
+            <a th:href="@{/motorista/ver-rota(nomeRota=${rota.nome})}" class="select-button">Ver Rota no Mapa</a>
+        </div>
+        <div th:if="${#lists.isEmpty(rotas)}">
+            <p>Nenhuma rota disponível no momento.</p>
+        </div>
+    </div>
+
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</div>
+</body>
+</html>
